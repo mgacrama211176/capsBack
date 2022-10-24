@@ -42,7 +42,8 @@ app.use((err, request, response, next) => {
   });
 });
 
-app.listen(4000, () => {
+const PORT = process.env.PORT || 8000;
+app.listen(PORT, () => {
   connectDB();
   console.log("express connected");
 });
