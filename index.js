@@ -13,9 +13,10 @@ import cors from "cors";
 const app = express();
 dotenv.config();
 
+
+const PORT = process.env.PORT || 4000;
 const connectDB = () => {
-  mongoose
-    .connect(process.env.MONGODB, "filAnime")
+  mongoose.connect(process.env.MONGODB, "filAnime",PORT)
     .then(() => {
       console.log("Database Connected");
     })
@@ -42,8 +43,7 @@ app.use((err, request, response, next) => {
   });
 });
 
-const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => {
-  connectDB();
-  console.log("express connected");
-});
+
+app.listen(
+  connectDB()
+);
