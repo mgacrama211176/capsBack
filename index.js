@@ -16,7 +16,7 @@ dotenv.config();
 
 const PORT = process.env.PORT || 4000;
 const connectDB = () => {
-  mongoose.connect(process.env.MONGODB, PORT)
+  mongoose.connect(process.env.MONGODB)
     .then(() => {
       console.log("Database Connected");
     })
@@ -44,6 +44,7 @@ app.use((err, request, response, next) => {
 });
 
 
-app.listen(
-  connectDB()
-);
+app.listen(PORT, () => {
+  connectDB();
+  console.log("express connected");
+});
