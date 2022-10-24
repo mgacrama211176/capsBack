@@ -46,5 +46,6 @@ app.use((err, request, response, next) => {
 
 app.listen(PORT, () => {
   connectDB();
+  console.log(`port is listening on ${PORT}`)
   console.log("express connected");
 });
