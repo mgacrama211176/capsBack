@@ -16,7 +16,7 @@ dotenv.config();
 
 const PORT = process.env.PORT || 4000;
 const connectDB = () => {
-  mongoose.connect(process.env.MONGODB)
+  mongoose.connect(process.env.MONGODB, PORT)
     .then(() => {
       console.log("Database Connected");
     })
