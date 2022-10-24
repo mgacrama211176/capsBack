@@ -16,7 +16,7 @@ dotenv.config();
 
 const PORT = process.env.PORT||4000;
 const connectDB = () => {
-  mongoose.connect(process.env.MONGODB,{ useNewUrlParser: true })
+  mongoose.connect('mongodb+srv://admin:admin123@cluster0.fxgjs.mongodb.net/?retryWrites=true&w=majority',{ useNewUrlParser: true })
     .then(() => {
       console.log("Database Connected");
     })
