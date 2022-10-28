@@ -16,7 +16,7 @@ const UserSchema = new mongoose.Schema(
 
     userCategory: {
       type: String,
-      default: "Animator",
+      default: "Beginner",
     },
 
     password: {
