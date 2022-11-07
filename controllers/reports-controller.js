@@ -14,8 +14,8 @@ export const viewReports = async (request, response, next) => {
 
 //localhost:4000/api/reports/addReport
 export const addReport = async (request, response, next) => {
-  const currentUser = request.body.currentUser;
-  const channelName = request.body.channelName;
+  const currentUser = request.body.userReporting;
+  const channelName = request.body.channelReported;
   const issues = request.body.issues;
   const desc = request.body.desc;
   console.log(currentUser);
