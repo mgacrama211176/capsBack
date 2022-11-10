@@ -79,6 +79,10 @@ const UserSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
+    employmentStatus: {
+      type: String,
+      default: "Not-Available",
+    },
   },
   { timestamps: true }
 );
