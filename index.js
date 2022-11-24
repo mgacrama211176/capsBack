@@ -58,5 +58,3 @@ app.listen(PORT, () => {
   console.log(`port is listening on ${PORT}`);
   console.log("express connected");
 });
-
-export default app;
