@@ -34,6 +34,9 @@ const connectDB = () => {
 app.use(cookieParser());
 app.use(express.json());
 app.use(cors({ credentials: true }));
+app.get("/", (request, response) => {
+  response.send("express on vercel!");
+});
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/videos", videoRoute);
