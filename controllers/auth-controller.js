@@ -43,8 +43,9 @@ export const signIn = async (request, response, next) => {
 };
 
 export const googleSignIn = async (request, response, next) => {
+  const user = await UserModel.findOne({ email: request.body.email });
+
   try {
-    const user = await UserModel.findOne({ email: request.body.email });
     if (user) {
       response.status(200).json(user._doc);
     } else {
@@ -56,6 +57,7 @@ export const googleSignIn = async (request, response, next) => {
       response.status(200).json(savedUser._doc);
     }
   } catch (err) {
+    console.log(err);
     next(err);
   }
 };

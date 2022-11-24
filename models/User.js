@@ -5,7 +5,7 @@ const UserSchema = new mongoose.Schema(
     // username is the channelName
     username: {
       type: String,
-      required: true,
+
       unique: true,
     },
     email: {
@@ -21,7 +21,6 @@ const UserSchema = new mongoose.Schema(
 
     password: {
       type: String,
-      required: true,
     },
     image: {
       type: String,
