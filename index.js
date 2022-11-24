@@ -59,4 +59,4 @@ app.listen(PORT, () => {
   console.log("express connected");
 });
 
-module.exports = app;
+export default app;
