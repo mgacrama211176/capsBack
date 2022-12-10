@@ -50,6 +50,9 @@ const UserSchema = new mongoose.Schema(
     birthdate: {
       type: String,
     },
+    phoneNumber: {
+      type: Number,
+    },
 
     about: {
       type: String,
