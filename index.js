@@ -9,6 +9,9 @@ import commentRoute from "./routes/comments-route.js";
 import authRoute from "./routes/auth.js";
 import ReportsRoute from "./routes/reports-route.js";
 
+//Drench Routes
+import clientsRoute from "./routes/clients-route.js";
+
 import cookieParser from "cookie-parser";
 
 import cors from "cors";
@@ -19,10 +22,7 @@ dotenv.config();
 const PORT = process.env.PORT || 4000;
 const connectDB = () => {
   mongoose
-    .connect(
-      "mongodb+srv://admin:admin123@cluster0.fxgjs.mongodb.net/?retryWrites=true&w=majority",
-      { useNewUrlParser: true }
-    )
+    .connect(process.env.DRENCH_DATABASE, { useNewUrlParser: true })
     .then(() => {
       console.log("Database Connected");
     })
@@ -35,6 +35,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(cors({ credentials: true }));
 
+app.use("/api/clients", clientsRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/videos", videoRoute);

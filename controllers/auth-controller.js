@@ -3,6 +3,7 @@ import UserModel from "../models/User.js";
 import bcrypt from "bcrypt";
 import { createError } from "../error.js";
 
+//Account creation
 export const signup = async (request, response, next) => {
   try {
     const salt = bcrypt.genSaltSync(10);
