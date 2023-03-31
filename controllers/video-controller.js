@@ -1,7 +1,7 @@
-import { createError } from '../error.js';
-import VideoModel from '../models/Video.js';
-import User from '../models/User.js';
-import UserModel from '../models/User.js';
+import { createError } from "../error.js";
+import VideoModel from "../models/Video.js";
+import User from "../models/User.js";
+import UserModel from "../models/User.js";
 
 export const addVideo = async (request, response, next) => {
   const currentUser = request.params.currentUser;
@@ -23,7 +23,7 @@ export const updateVideo = async (request, response, next) => {
   try {
     const video = await VideoModel.findById(request.params.id);
     if (!video) {
-      return next(createError(404, 'Video not found!'));
+      return next(createError(404, "Video not found!"));
     }
     if (currentUser === video.userId) {
       const updateVideo = await VideoModel.findByIdAndUpdate(
@@ -35,7 +35,7 @@ export const updateVideo = async (request, response, next) => {
       );
       response.status(200).json(updateVideo);
     } else {
-      return next(createError(403, 'You can only update your own video!'));
+      return next(createError(403, "You can only update your own video!"));
     }
   } catch (err) {
     next(err);
@@ -46,10 +46,10 @@ export const deleteVideo = async (request, response, next) => {
   try {
     const video = await VideoModel.findById(request.params.id);
     if (!video) {
-      return next(createError(404, 'video not found!'));
+      return next(createError(404, "video not found!"));
     } else {
       await VideoModel.findByIdAndDelete(request.params.id);
-      response.status(200).json('Video has been deleted');
+      response.status(200).json("Video has been deleted");
     }
   } catch (err) {
     next(err);
@@ -81,6 +81,7 @@ export const addView = async (request, response, next) => {
 
 export const random = async (request, response, next) => {
   try {
+    console.log("connected to Videos");
     const videos = await VideoModel.aggregate([{ $sample: { size: 30 } }]);
     response.status(200).json(videos);
   } catch (err) {
@@ -130,7 +131,7 @@ export const search = async (request, response, next) => {
   const query = request.query.q;
   try {
     const video = await VideoModel.find({
-      title: { $regex: query, $options: 'i' },
+      title: { $regex: query, $options: "i" },
     });
     response.status(200).json(video);
   } catch (err) {
